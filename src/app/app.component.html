@@ -1,41 +1,33 @@
-<mat-toolbar color="primary">
-  <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-    <mat-icon>person_outline</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>dialpad</mat-icon>
-      <span>Redial</span>
+<ng-container *ngIf="url !== '/'">
+  <mat-toolbar color="primary">
+    <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
     </button>
-    <button mat-menu-item disabled>
-      <mat-icon>voicemail</mat-icon>
-      <span>Check voice mail</span>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>person_outline</mat-icon>
     </button>
-    <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span>Disable alerts</span>
-    </button>
-  </mat-menu>
-</mat-toolbar>
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" #drawer >Drawer content</mat-drawer>
-  <mat-drawer-content>
-    <section>
-      <div class="example-label">Raised</div>
-      <div class="example-button-row">
-        <button mat-raised-button color="primary">Primary</button>
-        <button mat-raised-button color="accent">Accent</button>
-        <button mat-raised-button color="warn">Warn</button>
-        <button mat-raised-button disabled>Disabled</button>
-      </div>
-    </section>
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
-
-
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+  <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" #drawer >Drawer content</mat-drawer>
+    <mat-drawer-content> 
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</ng-container>
+<app-login *ngIf="url === '/'"></app-login>
