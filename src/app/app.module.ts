@@ -15,10 +15,21 @@ import { MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatListModule} from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatListModule } from '@angular/material/list';
+import { ProductListComponent } from './pages/product-list/product-list.component';
+import { MatCardModule } from '@angular/material/card';
+import { ProductAddComponent } from './pages/product-add/product-add.component';
+import { ProductEditComponent } from './pages/product-edit/product-edit.component';
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    ProductListComponent,
+    ProductAddComponent,
+    ProductEditComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,7 +45,8 @@ import {MatListModule} from '@angular/material/list';
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

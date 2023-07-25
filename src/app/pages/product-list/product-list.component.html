@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+      <button mat-raised-button color="primary" routerLink="/product-add">
+        <mat-icon>add</mat-icon>
+        เพิ่มสินค้า
+      </button>
+    </div>
+  </div>
+  <mat-card class="p-3">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>ลำดับ</th>
+                    <th>สินค้า</th>
+                    <th>หมวดหมู่</th>
+                    <th>จำนวน / หน่วย</th>
+                    <th>ข้อมูล</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let i of data">
+                  <tr>
+                    <!-- <td style="width: 20%;"><img src="{{i.img}}" alt=""></td> -->
+                    <td>{{i.id}}</td>
+                    <td class="text-start">{{i.name}}</td>
+                    <td>{{i.count}}</td>
+                    <td>{{i.count}}</td>
+                    <td>
+                        <button mat-raised-button routerLink="/product-edit/{{i.id}}">
+                            <mat-icon>edit</mat-icon>
+                            แก้ไข
+                        </button>
+                        &nbsp;
+                        <button mat-raised-button color="warn">
+                            <mat-icon>delete</mat-icon>
+                            ลบ
+                        </button>
+                    </td>
+                  </tr>
+                </ng-container>
+                </tbody>
+              </table>
+        </div>
+    </div>
+  </mat-card>
+</div>

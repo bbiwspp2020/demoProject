@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'BBiw Spp';
   links:any = [
     {icon:'home',name:'Home',path:'home'},
-    {icon:'person',name:'Contact Us',path:''},
+    {icon:'production_quantity_limits',name:'Product',path:'product-list'},
     {icon:'person',name:'Profile',path:''},
     {icon:'settings',name:'Setting',path:''},
   ]

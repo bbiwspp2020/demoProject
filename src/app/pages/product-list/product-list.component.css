@@ -1,0 +1,9 @@
+td img {
+    height: 150px;
+    object-fit: contain;
+}
+
+th,td{
+    vertical-align: middle;
+    text-align: center;
+}
