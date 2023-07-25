@@ -1,0 +1,12 @@
+.example-container {
+  height: 100dvh;
+  
+}
+mat-drawer {
+    width: 250px ;
+    background-color: #000000f1;
+    color: #fff;
+  }
+.example-spacer {
+  flex: 1 1 auto;
+}
