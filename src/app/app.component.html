@@ -1,11 +1,11 @@
-<ng-container *ngIf="url !== '/'">
+<ng-container *ngIf="url != '/'">
   <mat-toolbar color="primary">
-    <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button (click)="sidenav.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     <span>My App</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <button class="shadow" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
       <mat-icon>person_outline</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
@@ -17,17 +17,27 @@
         <mat-icon>voicemail</mat-icon>
         <span>Check voice mail</span>
       </button>
-      <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
+      <button mat-menu-item routerLink="/">
+        <mat-icon>logout</mat-icon>
+        <span>ออกจากระบบ</span>
       </button>
     </mat-menu>
   </mat-toolbar>
-  <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" #drawer >Drawer content</mat-drawer>
-    <mat-drawer-content> 
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" #sidenav opened>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let link of links" [activated]="link.isActive" routerLink="{{link.path}}" [ngClass]="link.path?'active' : ''">
+           <a matListItemTitle href="{{link.path}}">{{ link.name }}</a>
+           <button mat-icon-button (click)="showInfo(link)" matListItemMeta>
+              <mat-icon>{{link.icon}}</mat-icon>
+           </button>
+           {{link.isActive}}
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content> 
       <router-outlet></router-outlet>
-    </mat-drawer-content>
-  </mat-drawer-container>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </ng-container>
-<app-login *ngIf="url === '/'"></app-login>
+<app-login *ngIf="url == '/'"></app-login>

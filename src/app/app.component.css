@@ -1,12 +1,15 @@
 .example-container {
-  height: 100dvh;
-  
+  height: calc(100dvh - 64px);
+  padding-top: 10px;
 }
-mat-drawer {
+mat-sidenav {
     width: 250px ;
-    background-color: #000000f1;
+    /* background-color: #000000f1; */
     color: #fff;
   }
 .example-spacer {
   flex: 1 1 auto;
+}
+.active{
+  background-color: blue;
 }
