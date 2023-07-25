@@ -6,3 +6,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-family: 'Anuphan', sans-serif;
     font-weight: bolder;
 }
+h1{
+    font-family: 'Anuphan', sans-serif !important;
+    font-weight: bolder !important;
+}

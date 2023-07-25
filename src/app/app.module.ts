@@ -21,6 +21,8 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { MatCardModule } from '@angular/material/card';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { ProductEditComponent } from './pages/product-edit/product-edit.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +49,7 @@ import { ProductEditComponent } from './pages/product-edit/product-edit.componen
     MatPaginatorModule,
     MatListModule,
     MatCardModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12 d-flex justify-content-end">
+    <div class="col-md-12 d-flex justify-content-between">
+        <h1>รายการสินค้า</h1>
       <button mat-raised-button color="primary" routerLink="/product-add">
         <mat-icon>add</mat-icon>
         เพิ่มสินค้า
@@ -9,41 +10,59 @@
   </div>
   <mat-card class="p-3">
     <div class="row">
-        <div class="col-md-12">
-            <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>ลำดับ</th>
-                    <th>สินค้า</th>
-                    <th>หมวดหมู่</th>
-                    <th>จำนวน / หน่วย</th>
-                    <th>ข้อมูล</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <ng-container *ngFor="let i of data">
-                  <tr>
-                    <!-- <td style="width: 20%;"><img src="{{i.img}}" alt=""></td> -->
-                    <td>{{i.id}}</td>
-                    <td class="text-start">{{i.name}}</td>
-                    <td>{{i.count}}</td>
-                    <td>{{i.count}}</td>
-                    <td>
-                        <button mat-raised-button routerLink="/product-edit/{{i.id}}">
-                            <mat-icon>edit</mat-icon>
-                            แก้ไข
-                        </button>
-                        &nbsp;
-                        <button mat-raised-button color="warn">
-                            <mat-icon>delete</mat-icon>
-                            ลบ
-                        </button>
-                    </td>
-                  </tr>
-                </ng-container>
-                </tbody>
-              </table>
-        </div>
+      <div class="col-md-12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>ลำดับ</th>
+              <th>สินค้า</th>
+              <th>หมวดหมู่</th>
+              <th>จำนวน / หน่วย</th>
+              <th>สถานะ</th>
+              <th>ข้อมูล</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container
+              *ngFor="
+                let i of data | paginate : { itemsPerPage: 10, currentPage: p }
+              "
+            >
+              <tr>
+                <!-- <td style="width: 20%;"><img src="{{i.img}}" alt=""></td> -->
+                <td>{{ i.id }}</td>
+                <td class="text-start">{{ i.name }}</td>
+                <td>{{ i.count  }}</td>
+                <td>{{ i.count }}</td>
+                <td>
+                    <span *ngIf="i.id  % 2 == 0" class="badge text-bg-success">กำลังขาย</span>
+                    <!-- <span class="badge text-bg-warning">แก้ไข</span> -->
+                    <span *ngIf="i.id  % 2 != 0" class="badge text-bg-danger">ยกเลิก</span>
+                </td>
+                <td>
+                  <button
+                    mat-raised-button
+                    routerLink="/product-edit/{{ i.id }}"
+                  >
+                    <mat-icon>edit</mat-icon>
+                    แก้ไข
+                  </button>
+                  &nbsp;
+                  <button mat-raised-button color="warn" (click)="deleteitem(i.id)">
+                    <mat-icon>delete</mat-icon>
+                    ลบ
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+        <pagination-controls
+          (pageChange)="p = $event"
+          previousLabel=""
+          nextLabel=""
+        ></pagination-controls>
+      </div>
     </div>
   </mat-card>
 </div>
