@@ -3,10 +3,12 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 *{
-    font-family: 'Anuphan', sans-serif;
-    font-weight: bolder;
+    font-family: 'Anuphan', sans-serif ;
 }
-h1{
+h1,h2{
     font-family: 'Anuphan', sans-serif !important;
     font-weight: bolder !important;
+}
+mat-option,a{
+    font-family: 'Anuphan', sans-serif !important;
 }

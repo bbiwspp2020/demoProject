@@ -7,6 +7,7 @@ import Swal from 'sweetalert2'
 })
 export class ProductListComponent {
   p: any = 1;
+  value:any =''
   data: any = [
     {
       id: 1,

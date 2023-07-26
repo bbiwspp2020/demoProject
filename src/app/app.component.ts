@@ -9,10 +9,10 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'BBiw Spp';
   links:any = [
-    {icon:'home',name:'Home',path:'home'},
-    {icon:'production_quantity_limits',name:'Product',path:'product-list'},
+    {icon:'home',name:'หน้าแรก',path:'home'},
+    {icon:'production_quantity_limits',name:'สินค้า',path:'product-list'},
     {icon:'person',name:'Profile',path:''},
-    {icon:'settings',name:'Setting',path:''},
+    {icon:'settings',name:'ข้อมูลหลัก',path:''},
   ]
   url: any;
   constructor(private router: Router) {

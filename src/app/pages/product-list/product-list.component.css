@@ -10,4 +10,7 @@ th,td{
 .badge{
     font-size: 12px;
 }
+mat-form-field{
+    width: 100%;
+}
 

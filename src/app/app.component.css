@@ -4,7 +4,7 @@
 }
 mat-sidenav {
   width: 250px;
-  background: #3f51b5;
+  background: rgb(63, 81, 161);
   color: #fff;
 }
 a,mat-icon{
@@ -16,4 +16,6 @@ a,mat-icon{
 }
 .active {
   background-color: rgb(35, 100, 229);
+  border-right: 5px solid rgb(255, 255, 255);
 }
+

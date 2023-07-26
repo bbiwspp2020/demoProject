@@ -8,6 +8,37 @@
       </button>
     </div>
   </div>
+  <mat-card class="p-3 mb-3">
+    <div class="row">
+      <h2>ค้นหารายการสินค้า</h2>
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>สินค้า</mat-label>
+          <input matInput type="search">
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>หมวดหมู่</mat-label>
+          <mat-select disableRipple>
+            <mat-option value="1">Option 1</mat-option>
+            <mat-option value="2">Option 2</mat-option>
+            <mat-option value="3">Option 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>สถานะ</mat-label>
+          <mat-select disableRipple>
+            <mat-option value="1">กำลังขาย</mat-option>
+            <mat-option value="2">แก้ไข</mat-option>
+            <mat-option value="3">ยกเลิก</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card>
   <mat-card class="p-3">
     <div class="row">
       <div class="col-md-12">

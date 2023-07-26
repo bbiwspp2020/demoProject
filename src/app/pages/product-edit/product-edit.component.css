@@ -1,0 +1,8 @@
+mat-form-field{
+    width: 100%;
+}
+.previewimage{
+    height: 350px;
+    width: auto;
+    object-fit: contain;
+}

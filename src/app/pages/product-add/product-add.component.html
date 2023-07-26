@@ -1,1 +1,91 @@
-<p>product-add works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>เพิ่มสินค้า</h1>
+        </div>
+    </div>
+    <mat-card class="p-3">
+        <form [formGroup]="f">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <mat-card (click)="file.click()">
+                        <input type="file" style="display: none;" accept="image/png, image/gif, image/jpeg" #file
+                            [formControlName]="'img'">
+                        <div class="row previewimage align-items-center">
+                            <div class="col-md-12 text-center">
+                                <mat-icon>file_upload</mat-icon>
+                                <h1>อัพโหลดไฟล์รูป</h1> 
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <mat-card class="w-100">
+                        <img class="previewimage"
+                            src="https://cdn3.vectorstock.com/i/1000x1000/35/52/placeholder-rgb-color-icon-vector-32173552.jpg"
+                            alt="">
+                    </mat-card>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>ชื่อสินค้า</mat-label>
+                        <input matInput [formControlName]="'nameProduct'">
+                        <mat-error *ngIf="f.controls.nameProduct">
+                            กรุณากรอกชื่อสินค้า
+                          </mat-error>
+                    </mat-form-field>
+                    {{f.nameProduct | json}}
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>หมวดหมู่</mat-label>
+                        <mat-select disableRipple [formControlName]="'category'">
+                            <mat-option value="1">Option 1</mat-option>
+                            <mat-option value="2">Option 2</mat-option>
+                            <mat-option value="3">Option 3</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="f.controls.category">
+                            กรุณาเลือกหมวดหมู่
+                          </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>จำนวน</mat-label>
+                        <input matInput [formControlName]="'quantity'">
+                        <mat-error *ngIf="f.controls.quantity">
+                            กรุณากรอกจำนวน
+                          </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>ราคาต่อหน่วย</mat-label>
+                        <input matInput [formControlName]="'price'">
+                        <mat-error *ngIf="f.controls.quantity">
+                            กรุณากรอกราคาต่อหน่วย
+                          </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>รายละเอียด</mat-label>
+                        <textarea matInput rows="10"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+    <div class="row">
+        <div class="col-md-12 mt-4">
+            <button mat-raised-button color="primary" (click)="submit()">บันทึก</button> &nbsp;
+            <button mat-raised-button>กลับ</button>
+        </div>
+    </div>
+</div>
