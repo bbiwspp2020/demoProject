@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-product-add',
   templateUrl: './product-add.component.html',
@@ -8,7 +9,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class ProductAddComponent implements OnInit {
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router:Router
   ) { }
   f: FormGroup | any
 
@@ -23,21 +25,25 @@ export class ProductAddComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.f.controls);
-
     if (this.f.status === "INVALID") {
       for (let i in this.f.controls) {
         this.f.controls[i].markAsTouched();
       }
     } else {
-      this.senddata()
+      this.sendData()
     }
 
   }
 
-  senddata() {
-    alert(this.f.value)
+  sendData() {
+    Swal.fire({
+      icon: 'success',
+      text: 'บันทึกสำเร็จ',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    setTimeout(() => {
+      this.router.navigate(['/product-list'])
+    }, 1500);
   }
-
-
 }
