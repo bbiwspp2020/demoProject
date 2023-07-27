@@ -24,11 +24,11 @@
     </mat-menu>
   </mat-toolbar>
   <mat-sidenav-container class="example-container">
-    <mat-sidenav mode="side" #sidenav opened mat-background-primary>
+    <mat-sidenav mode="side" #sidenav opened [mode]="mobileQuery.matches ? 'over' : 'side'">
       <mat-nav-list>
-        <mat-list-item *ngFor="let link of links" [activated]="link.isActive" routerLink="{{link.path}}" [ngClass]="'/'+link.path === url ?'active' : ''">
+        <mat-list-item *ngFor="let link of links" [activated]="link.active" routerLink="{{link.path}}" [ngClass]="'/'+link.path === url ?'active' : ''">
            <a matListItemTitle href="{{link.path}}">{{ link.name }}</a>
-           <button mat-icon-button (click)="showInfo(link)" matListItemMeta>
+           <button mat-icon-button  matListItemMeta>
               <mat-icon>{{link.icon}}</mat-icon>
            </button>
            {{link.isActive}}

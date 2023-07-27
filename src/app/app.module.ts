@@ -22,7 +22,8 @@ import { MatCardModule } from '@angular/material/card';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { ProductEditComponent } from './pages/product-edit/product-edit.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,9 +51,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatListModule,
     MatCardModule,
     NgxPaginationModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

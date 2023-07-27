@@ -19,14 +19,21 @@
       <div class="col-md-12 mt-2">
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" />
+          <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [formControl]="password" />
           <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </mat-form-field>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <button mat-raised-button color="primary" routerLink="/home">Login</button>
+        <mat-error *ngIf="data?.Message">
+          {{data?.Message}}
+        </mat-error>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button mat-raised-button color="primary" (click)="signIn()">Login</button>
       </div>
     </div>
   </div>

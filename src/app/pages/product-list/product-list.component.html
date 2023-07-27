@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12 d-flex justify-content-between">
-        <h1>รายการสินค้า</h1>
+      <h1>รายการสินค้า</h1>
       <button mat-raised-button color="primary" routerLink="/product-add">
         <mat-icon>add</mat-icon>
         เพิ่มสินค้า
@@ -54,27 +54,22 @@
             </tr>
           </thead>
           <tbody>
-            <ng-container
-              *ngFor="
-                let i of data | paginate : { itemsPerPage: 10, currentPage: p }
-              "
-            >
+            <ng-container *ngFor="
+                let i of data | paginate : { itemsPerPage: 10, currentPage: p }; let index=index
+              ">
               <tr>
                 <!-- <td style="width: 20%;"><img src="{{i.img}}" alt=""></td> -->
-                <td>{{ i.id }}</td>
-                <td class="text-start">{{ i.name }}</td>
-                <td>{{ i.count  }}</td>
-                <td>{{ i.count }}</td>
+                <td>{{ index + 1 }}</td>
+                <td class="text-start">{{ i.productName }}</td>
+                <td>{{ i.category }}</td>
+                <td>{{ i.quantity }}</td>
                 <td>
-                    <span *ngIf="i.id  % 2 == 0" class="badge text-bg-success">กำลังขาย</span>
-                    <!-- <span class="badge text-bg-warning">แก้ไข</span> -->
-                    <span *ngIf="i.id  % 2 != 0" class="badge text-bg-danger">ยกเลิก</span>
+                  <span *ngIf="i.status === '1'" class="badge text-bg-success">กำลังขาย</span>
+                  <span *ngIf="i.status === '2'" class="badge text-bg-warning">แก้ไข</span>
+                  <span *ngIf="i.status === '0'" class="badge text-bg-danger">ยกเลิก</span>
                 </td>
                 <td>
-                  <button
-                    mat-raised-button
-                    routerLink="/product-edit/{{ i.id }}"
-                  >
+                  <button mat-raised-button routerLink="/product-edit/{{ i.id }}">
                     <mat-icon>edit</mat-icon>
                     แก้ไข
                   </button>
@@ -88,11 +83,7 @@
             </ng-container>
           </tbody>
         </table>
-        <pagination-controls
-          (pageChange)="p = $event"
-          previousLabel=""
-          nextLabel=""
-        ></pagination-controls>
+        <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>
       </div>
     </div>
   </mat-card>
