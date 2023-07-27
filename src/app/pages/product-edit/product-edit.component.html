@@ -9,8 +9,8 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <mat-card (click)="file.click()">
-                        <input type="file" style="display: none;" accept="image/png, image/gif, image/jpeg" #file
-                            [formControlName]="'img'">
+                        <input type="file" multiple (change)="onFileChange($event)" style="display: none;"
+                            accept="image/png, image/gif, image/jpeg" #file [formControlName]="'img'">
                         <div class="row previewimage align-items-center">
                             <div class="col-md-12 text-center">
                                 <mat-icon>file_upload</mat-icon>
@@ -22,8 +22,13 @@
                 <div class="col-md-6 d-flex justify-content-center">
                     <mat-card class="w-100">
                         <img class="previewimage"
-                            src="https://cdn3.vectorstock.com/i/1000x1000/35/52/placeholder-rgb-color-icon-vector-32173552.jpg"
-                            alt="">
+                        *ngIf="filename === ''"
+                        src="https://cdn3.vectorstock.com/i/1000x1000/35/52/placeholder-rgb-color-icon-vector-32173552.jpg"
+                        alt="">
+                    <img
+                    *ngIf="filename !== ''"
+                    class="previewimage"
+                    src="{{url+filename}}" alt="">
                     </mat-card>
                 </div>
             </div>

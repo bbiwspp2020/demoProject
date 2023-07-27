@@ -18,7 +18,7 @@ export class ProductEditComponent implements OnInit {
   ) {
   }
   f: FormGroup | any
-
+  url:any = 'http://localhost:3000/api/files/image/'
   ngOnInit() {
     this.f = this.fb.group({
       productName: new FormControl('', [Validators.required]),
@@ -38,10 +38,10 @@ export class ProductEditComponent implements OnInit {
       category: data.category,
       quantity: data.quantity,
       price: data.price,
-      img: data.img,
+      image: data.image,
       details: data.details,
     });
-    
+    this.filename = data.image
   }
 
   submit() {
@@ -69,6 +69,7 @@ export class ProductEditComponent implements OnInit {
       quantity: this.f.controls.quantity.value,
       price: this.f.controls.price.value,
       details: this.f.controls.details.value,
+      image: this.filename,
       status: '2',
       userId: Number(userId),
     }
@@ -76,5 +77,30 @@ export class ProductEditComponent implements OnInit {
     await setTimeout(() => {
       this.router.navigate(['/product-list'])
     }, 1500);
+  }
+
+  Files: any = [];
+  attachFiles: any = [];
+  attachFilesName: any = [];
+  async onFileChange(files: any) {
+    this.filename = ''
+    for (var i = 0; i < files.target.files.length; i++) {
+      this.Files.push(files.target.files[i]);
+    }
+    files.target.value = null;
+    await this.upLoad();
+  }
+  filename:any = ''
+  async upLoad() {
+    this.filename = ''
+    let data: any = await this.service.upLoadfile('/files/uploads/' + Number(sessionStorage.getItem('user')), this.Files)
+    if(data.filename){
+      // let body = {
+      //   filename: '1690483697571-Screenshot_20230215_113023.png'
+      // }
+      // let image: any = await this.service.getTokenpath('/files/image/' + data.filename)
+    this.filename = data.filename
+    this.Files = []
+    }
   }
 }

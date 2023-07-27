@@ -97,4 +97,29 @@ export class ProductService {
       });
     });
   }
+
+  upLoadfile(path: any,data: any,){
+    let url = this.url + path;
+    let token = sessionStorage.getItem('accessToken') || null;
+    if (!token) {
+      return;
+    }
+    const header = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    let formData: FormData = new FormData();
+    for (var i = 0; i < data.length; i++) {
+      formData.append('file', data[i]);
+    }
+    return new Promise((resolve, reject) => {
+      this.http.post<any>(url,formData, { headers: header }).subscribe({
+        next: (res) => {
+          resolve(res);
+        },
+        error: (error) => {
+          reject(error);
+        },
+      });
+    });
+  }
 }

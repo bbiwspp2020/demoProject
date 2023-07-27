@@ -9,7 +9,7 @@ import Swal from 'sweetalert2'
 export class ProductListComponent implements OnInit {
   p: any = 1;
   value: any = ''
-  data: any;
+  data: any = [];
   constructor(
     private service: ProductService
   ) { }
