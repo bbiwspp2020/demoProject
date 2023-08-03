@@ -1,6 +1,7 @@
 <ng-container *ngIf="url != '/'">
   <mat-toolbar color="primary">
-    <button (click)="sidenav.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button (click)="sidenav.toggle()" mat-icon-button class="example-icon"
+      aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     <span>My App</span>
@@ -9,14 +10,13 @@
       <mat-icon>person_outline</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item routerLink="/user" [disabled]="url ==='/user'">
+        <app-user></app-user>
+      </button>
+      <!-- <button mat-menu-item>
         <mat-icon>dialpad</mat-icon>
         <span>Redial</span>
-      </button>
-      <button mat-menu-item disabled>
-        <mat-icon>voicemail</mat-icon>
-        <span>Check voice mail</span>
-      </button>
+      </button> -->
       <button mat-menu-item routerLink="/">
         <mat-icon>logout</mat-icon>
         <span>ออกจากระบบ</span>
@@ -26,16 +26,17 @@
   <mat-sidenav-container class="example-container">
     <mat-sidenav mode="side" #sidenav opened [mode]="mobileQuery.matches ? 'over' : 'side'">
       <mat-nav-list>
-        <mat-list-item *ngFor="let link of links" [activated]="link.active" routerLink="{{link.path}}" [ngClass]="'/'+link.path === url ?'active' : ''">
-           <a matListItemTitle href="{{link.path}}">{{ link.name }}</a>
-           <button mat-icon-button  matListItemMeta>
-              <mat-icon>{{link.icon}}</mat-icon>
-           </button>
-           {{link.isActive}}
+        <mat-list-item *ngFor="let link of links" [activated]="link.active" routerLink="{{link.path}}"
+          [ngClass]="'/'+link.path === url ?'active' : ''">
+          <a matListItemTitle href="{{link.path}}">{{ link.name }}</a>
+          <button mat-icon-button matListItemMeta>
+            <mat-icon>{{link.icon}}</mat-icon>
+          </button>
+          {{link.isActive}}
         </mat-list-item>
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content> 
+    <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

@@ -45,7 +45,7 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>ลำดับ</th>
+              <!-- <th>ลำดับ</th> -->
               <th>สินค้า</th>
               <th>หมวดหมู่</th>
               <th>จำนวน / หน่วย</th>
@@ -55,17 +55,17 @@
           </thead>
           <tbody>
             <ng-container *ngFor="
-                let i of data | paginate : { itemsPerPage: 10, currentPage: p }; let index=index
+                let i of data?.response | paginate : { itemsPerPage: 10, currentPage: p }; let index=index
               ">
               <tr>
-                <td>{{ index + 1 }}</td>
+                <!-- <td>{{ index + 1 }}</td> -->
                 <td class="text-start">{{ i.productName }}</td>
                 <td>{{ i.category }}</td>
                 <td>{{ i.quantity }}</td>
                 <td>
                   <span *ngIf="i.status === '1'" class="badge text-bg-success">กำลังขาย</span>
                   <span *ngIf="i.status === '2'" class="badge text-bg-warning">แก้ไข</span>
-                  <span *ngIf="i.status === '0'" class="badge text-bg-danger">ยกเลิก</span>
+                  <span *ngIf="i.status === '0'" class="badge text-bg-danger">สินค้าหมด</span>
                 </td>
                 <td>
                   <button mat-raised-button routerLink="/product-edit/{{ i.id }}">

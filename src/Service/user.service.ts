@@ -24,7 +24,7 @@ export class UserService {
     });
   }
 
-  async getTnkenpath(path: any) {
+  async getTokenpath(path: any) {
     let url = this.url + path;
     let token = sessionStorage.getItem('accessToken') || null;
     if (!token) {
@@ -35,6 +35,27 @@ export class UserService {
     });
     return new Promise((resolve, reject) => {
       this.http.get<any>(url, { headers: header }).subscribe({
+        next: (res) => {
+          resolve(res);
+        },
+        error: (error) => {
+          reject(error);
+        },
+      });
+    });
+  }
+
+  async patchTokenpath(path: any, body: any) {
+    let url = this.url + path;
+    let token = sessionStorage.getItem('accessToken') || null;
+    if (!token) {
+      return;
+    }
+    const header = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return new Promise((resolve, reject) => {
+      this.http.patch<any>(url, body, { headers: header }).subscribe({
         next: (res) => {
           resolve(res);
         },

@@ -23,8 +23,6 @@ export class ProductService {
       this.http.get<any>(url, { headers: header }).subscribe({
         next: (res) => {
           resolve(res);
-          console.log(1);
-          
         },
         error: (error) => {
           reject(error);

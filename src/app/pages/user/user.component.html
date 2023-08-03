@@ -1,0 +1,51 @@
+<div class="container" *ngIf="checkpath === '/user'">
+    <form [formGroup]="f">
+        <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+                <img *ngIf="filename === ''" class="imguserdefault" src="./assets/imguserdefault.png"
+                    alt="imguserdefault.png" (click)="file.click()">
+                <img *ngIf="filename !== ''" class="imguserdefault" src="{{url+filename}}" alt=""
+                    (click)="file.click()">
+            </div>
+            <input type="file" multiple (change)="onFileChange($event)" style="display: none;"
+                accept="image/png, image/gif, image/jpeg" #file>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>ชื่อ</mat-label>
+                    <input matInput [formControlName]="'firstName'">
+                    <mat-error *ngIf="f.controls.firstName">
+                        กรุณากรอกชื่อ
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>นามสกุล</mat-label>
+                    <input matInput [formControlName]="'lastName'">
+                    <mat-error *ngIf="f.controls.lastName">
+                        กรุณากรอกนามสกุล
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button mat-raised-button color="primary" (click)="submit()">บันทึก</button> &nbsp;
+                <button mat-raised-button>กลับ</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container" *ngIf="checkpath !== '/user'">
+    <div class="row">
+        <div class="col-md-12">
+            <label>ชื่อ :</label> {{this.f.controls.firstName.value}}
+        </div>
+        <div class="col-md-12">
+            <label>สกุล :</label> {{this.f.controls.lastName.value}}
+        </div>
+    </div>
+</div>

@@ -25,6 +25,7 @@ export class ProductEditComponent implements OnInit {
       category: new FormControl('', [Validators.required]),
       quantity: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
+      status: new FormControl('', [Validators.required]),
       img: new FormControl('', []),
       details: new FormControl('', []),
     })
@@ -40,6 +41,7 @@ export class ProductEditComponent implements OnInit {
       price: data.price,
       image: data.image,
       details: data.details,
+      status: data.status,
     });
     this.filename = data.image
   }
@@ -70,7 +72,7 @@ export class ProductEditComponent implements OnInit {
       price: this.f.controls.price.value,
       details: this.f.controls.details.value,
       image: this.filename,
-      status: '2',
+      status: this.f.controls.status.value,
       userId: Number(userId),
     }
     let data: any = await this.service.patchTokenpath('/product/' + this.route.snapshot.paramMap.get('id'), body)
@@ -95,10 +97,6 @@ export class ProductEditComponent implements OnInit {
     this.filename = ''
     let data: any = await this.service.upLoadfile('/files/uploads/' + Number(sessionStorage.getItem('user')), this.Files)
     if(data.filename){
-      // let body = {
-      //   filename: '1690483697571-Screenshot_20230215_113023.png'
-      // }
-      // let image: any = await this.service.getTokenpath('/files/image/' + data.filename)
     this.filename = data.filename
     this.Files = []
     }

@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   links:any = [
     {icon:'home',name:'หน้าแรก',path:'home'},
     {icon:'production_quantity_limits',name:'สินค้า',path:'product-list'},
-    {icon:'person',name:'Profile',path:''},
+    {icon:'person',name:'Profile',path:'user'},
     {icon:'settings',name:'ข้อมูลหลัก',path:''},
   ]
   url: any;

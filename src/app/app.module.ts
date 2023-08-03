@@ -24,6 +24,8 @@ import { ProductEditComponent } from './pages/product-edit/product-edit.componen
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserComponent } from './pages/user/user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProductListComponent,
     ProductAddComponent,
     ProductEditComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     NgxPaginationModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],
