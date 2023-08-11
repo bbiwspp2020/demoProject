@@ -4,3 +4,13 @@
     justify-content: center;
     height: 100dvh;
 }
+
+button{
+width: 100%;
+}
+
+.google{
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}

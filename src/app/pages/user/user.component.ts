@@ -39,11 +39,11 @@ export class UserComponent implements OnInit {
   async getUser() {
     let data: any = await this.service.getTokenpath('/users/' + sessionStorage.getItem('user'))
     this.f.patchValue({
-      email: data.email,
-      firstName: data.firstName,
-      lastName: data.lastName,
+      email: data?.email,
+      firstName: data?.firstName,
+      lastName: data?.lastName,
     });
-    this.filename = data.imgProfile
+    this.filename = data?.imgProfile
   }
 
   Files: any = [];

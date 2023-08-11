@@ -23,6 +23,22 @@ export class UserService {
       });
     });
   }
+  async signInwithGoogle(path: any) {
+    let url = this.url + path;
+    const header = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return new Promise((resolve, reject) => {
+      this.http.get<any>(url,{ headers: header }).subscribe({
+        next: (res) => {
+          resolve(res);
+        },
+        error: (error) => {
+          reject(error);
+        },
+      });
+    });
+  }
 
   async getTokenpath(path: any) {
     let url = this.url + path;

@@ -26,6 +26,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserComponent } from './pages/user/user.component';
+import { environment } from 'src/environments/environment';
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider
+} from '@abacritt/angularx-social-login';
+const CLIENT_ID = environment.client_Id;
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,9 +63,25 @@ import { UserComponent } from './pages/user/user.component';
     NgxPaginationModule,
     MatSelectModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: "SocialAuthServiceConfig",
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              CLIENT_ID
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
